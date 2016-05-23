@@ -8,22 +8,7 @@ import java.lang.*;
 class CountofPossibleString {
 	
     
-    static Boolean  checkPossibleRec(char set[], String prefix, int n, String p) {
-         
-        
- 
-       
-        for (int i = 0; i < n; ++i) {
-             
-            // Next character of input added
-            String newPrefix = prefix + set[i]; 
-            if(newPrefix.equals(p))
-              return true;
-           
-            checkPossibleRec(set, newPrefix, n, p); 
-        }
-        return false;
-    }
+   
     public static void main(String args[] ) throws Exception {
         /*
          * Read input from stdin and provide input before running
@@ -43,10 +28,13 @@ line = br.readLine();
 String splitLine[] = line.split(" ");
 String s=splitLine[0];
 String p=splitLine[1];
-  int len = s.length(); 
-  char[] charArray = s.toCharArray();
-Boolean possib= checkPossibleRec(charArray, "", len, p);
- if(possib)
+Boolean flagg=false;
+ for(int i=0;i<p.length()-s.length();i++){
+           			String temp=s.substring(0,i)+s+s.substring(i,s.length());
+           			if(temp.trim().equals(p))flag=true;
+           		}
+ 
+ if(flag)
         System.out.println("Possible");
   else
     System.out.println("Impossible");
